@@ -1,0 +1,16 @@
+fastapi
+uvicorn
+sqlalchemy
+pymysql
+boto3
+ffmpeg-python
+openai-whisper
+transformers
+scikit-learn
+lime
+python-multipart
+cryptography
+transformers
+torch
+pydantic-settings
+openai
