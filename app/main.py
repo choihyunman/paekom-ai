@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.routes import stt_routes, report_routes
+from app.routes import stt_routes, report_routes, mission_routes
 
 app = FastAPI(
     title="Paekom AI",
@@ -17,8 +18,9 @@ app.add_middleware(
 )
 
 # 라우터 등록
-app.include_router(stt_routes.router, prefix="/api", tags=["STT"])
-app.include_router(report_routes.router, prefix="/api", tags=["Report"])
+app.include_router(stt_routes.router, prefix="/api/ai", tags=["STT"])
+app.include_router(report_routes.router, prefix="/api/ai", tags=["Report"])
+app.include_router(mission_routes.router, prefix="/api/ai", tags=["Mission"])
 
 @app.get("/")
 def root():
