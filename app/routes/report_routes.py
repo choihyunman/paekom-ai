@@ -26,7 +26,7 @@ async def generate_report(req: ReportRequest):
             "status": "success",
             "data": {
                 "summary": solar_json.get("summary", ""),
-                "issues": solar_json.get("main_issues", []),
+                "issues": solar_json.get("issues", []),
                 "emotion": analysis_result["emotion"],
                 "evidence": analysis_result["evidence"],
                 "overall_assessment": solar_json.get("overall_assessment", "분석 결과를 받아올 수 없습니다.")
