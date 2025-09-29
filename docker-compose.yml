@@ -25,11 +25,15 @@ services:
       - db
     environment:
       DATABASE_URL: ${DATABASE_URL}
+      # 모델 경로 환경변수 전달 (Dockerfile에서도 이미 지정했지만 여기서도 명시 가능)
+      EMOTION_MODEL_DIR: /app/my-korean-emotion-model
     ports:
       - "8000:8000"
     volumes:
-      - ./app:/app/app # 로컬 app 폴더 → 컨테이너 /app/app
-    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+      - ./app:/app/app # 코드 핫리로드용
+      # 모델 폴더도 마운트하면 로컬에서 수정한 모델을 바로 반영 가능
+      - ./my-korean-emotion-model:/app/my-korean-emotion-model
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload --log-level debug
 
 volumes:
   db_data:
